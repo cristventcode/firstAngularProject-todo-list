@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 list-main">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon" (click)="addNewItem()">+</div>
+        <input [(ngModel)]="newItem.title" type="text" class="form-control todo-input" value="{{newItem.title}}">
+      </div>
+      <div>
+        {{testing}}
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of allItems">
+            <div class="item-group">
+              <span class="item-status">
+              <input type="checkbox" id="{{item.id}}">
+              </span>
+              <span class="item-text">
+            {{item.title}}
+            </span>
+              <span class="item-delete">
+              <button class="btn btn-xs btn-default" (click)="deleteItem(item.id)"> X </button>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
