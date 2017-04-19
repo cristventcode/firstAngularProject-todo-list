@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 list-main">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon" (click)="addNewItem()">+</div>
-        <input [(ngModel)]="newItem.title" type="text" class="form-control todo-input" value="{{newItem.title}}">
+      <div class="form-group">
+        <input [(ngModel)]="newItem.title" type="text" (keydown)="addNewItem($event)" class="form-control todo-input" value="{{newItem.title}}">
       </div>
       <div>
         {{testing}}
@@ -23,6 +21,9 @@
             </div>
           </li>
         </ul>
+        <div class="container items-left">
+          <p>{{listCount}} left to complete</p>
+        </div>
       </div>
 
     </div>

@@ -10,19 +10,27 @@ export class AppComponent {
   title = "To-do List";
   allItems = ALLITEMS;
   newItem = new listItem;
-
-  addNewItem(): void {
-    this.newItem.id = ++idCounter;
-    var newTemp: listItem = this.newItem;
-    this.allItems.push(newTemp);
-    this.newItem = new listItem;
+  listCount = ALLITEMS.length;
+  addNewItem(event): void {
+    if (event.key === "Enter") {
+      this.newItem.id = ++idCounter;
+      var newTemp: listItem = this.newItem;
+      this.allItems.push(newTemp);
+      this.newItem = new listItem;
+      this.listCount++;
+    };
   };
 
-  deleteItem(id: number){
+  deleteItem(id: number) {
     var location = ALLITEMS.findIndex(item => item.id == id);
-    ALLITEMS.splice(location,1);
-  }
+    ALLITEMS.splice(location, 1);
+    this.listCount--;
+  };
 }
+
+const ALLITEMS: listItem[] = [
+  { id: 1, title: "Study for my final exam" },
+];
 
 var idCounter: number = 1;
 
@@ -31,9 +39,7 @@ export class listItem {
   title: string;
 }
 
-const ALLITEMS: listItem[] = [
-  { id: 1, title: "Study for my final exam" },
-];
+
 
 
 
