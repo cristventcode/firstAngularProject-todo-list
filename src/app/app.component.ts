@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent {
   allItems = ALLITEMS;
   newItem = new listItem;
   listCount = ALLITEMS.length;
+
   addNewItem(event): void {
     if (event.key === "Enter") {
       this.newItem.id = ++idCounter;
@@ -26,10 +28,17 @@ export class AppComponent {
     ALLITEMS.splice(location, 1);
     this.listCount--;
   };
+
+
+  toggleStatus(element, id) {
+    var temp: listItem = ALLITEMS.find(item => item.id == id);
+    temp.done = (temp.done === false) ? true : false;
+    console.log(temp);
+  }
 }
 
 const ALLITEMS: listItem[] = [
-  { id: 1, title: "Study for my final exam" },
+  { id: 1, title: "Study for my final exam", done: false },
 ];
 
 var idCounter: number = 1;
@@ -37,7 +46,12 @@ var idCounter: number = 1;
 export class listItem {
   id: number;
   title: string;
+  done: boolean = false;
 }
+
+
+
+
 
 
 

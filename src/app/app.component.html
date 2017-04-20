@@ -4,28 +4,22 @@
       <div class="form-group">
         <input [(ngModel)]="newItem.title" type="text" (keydown)="addNewItem($event)" class="form-control todo-input" value="{{newItem.title}}">
       </div>
-      <div>
-        {{testing}}
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let item of allItems">
-            <div class="item-group">
-              <span class="item-status">
-              <input type="checkbox" id="{{item.id}}">
-              </span>
-              <span class="item-text">
-            {{item.title}}
-            </span>
-              <span class="item-delete">
-              <button class="btn btn-xs btn-default" (click)="deleteItem(item.id)"> X </button>
+
+      <ul class="list-group">
+        <li class="list-group-item object-item" *ngFor="let item of allItems">
+          <div class="row inline-block">
+            <div class="col-xs-10 text-holder">
+              <span (click)="toggleStatus($event,item.id)">
+              {{item.title}}
               </span>
             </div>
-          </li>
-        </ul>
-        <div class="container items-left">
-          <p>{{listCount}} left to complete</p>
-        </div>
+            <div class="col-xs-2 delete-holder"><span class="delete-btn" (click)="deleteItem(item.id)">X</span></div>
+          </div>
+        </li>
+      </ul>
+      <div class="container">
+        <p> {{listCount}} left to complete</p>
       </div>
-
     </div>
   </div>
 </div>
