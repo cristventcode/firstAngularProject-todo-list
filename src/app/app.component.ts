@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ export class AppComponent {
   title = "To-do List";
   allItems = ALLITEMS;
   newItem = new listItem;
-  listCount = ALLITEMS.length;
+  notDoneCount: number;
 
   addNewItem(event): void {
     if (event.key === "Enter") {
@@ -19,27 +18,35 @@ export class AppComponent {
       var newTemp: listItem = this.newItem;
       this.allItems.push(newTemp);
       this.newItem = new listItem;
-      this.listCount++;
+      this.notDoneCount = getNotDone();
     };
   };
 
   deleteItem(id: number) {
     var location = ALLITEMS.findIndex(item => item.id == id);
     ALLITEMS.splice(location, 1);
-    this.listCount--;
+    this.notDoneCount = getNotDone();
   };
 
+  clearDone() {
+    for (var item in this.allItems) {
+      if (this.allItems[item].done === true) {
+        var id = this.allItems[item].id;
+        var location = this.allItems.findIndex(item => item.id == id);
+        this.allItems.splice(location, 1);
+      }
+    }
+  }
 
-  toggleStatus(element, id) {
+  toggleStatus(id: any) {
     var temp: listItem = ALLITEMS.find(item => item.id == id);
     temp.done = (temp.done === false) ? true : false;
-    console.log(temp);
-  }
+    makeChange(id, temp.done);
+    this.notDoneCount = getNotDone();
+  };
 }
 
-const ALLITEMS: listItem[] = [
-  { id: 1, title: "Study for my final exam", done: false },
-];
+const ALLITEMS: listItem[] = [];
 
 var idCounter: number = 1;
 
@@ -48,6 +55,24 @@ export class listItem {
   title: string;
   done: boolean = false;
 }
+
+
+function makeChange(id, status: boolean) {
+  var clicked = document.getElementById(id);
+  clicked.style.textDecoration = (status === true) ? "line-through" : "none";
+};
+
+function getNotDone() {
+  var notDone: number = 0;
+  for (var item in ALLITEMS) {
+    if (ALLITEMS[item].done === false) {
+      notDone++;
+    }
+  }
+  return notDone;
+}
+
+
 
 
 

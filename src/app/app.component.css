@@ -16,6 +16,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   font-weight: bold;
+  border: 1px solid #ddd;
 }
 
 .todo-input {
@@ -82,7 +83,29 @@ li:hover>.row>.delete-holder>.delete-btn {
   display: block;
 }
 
-.object-item:hover{
+.object-item:hover {
   background-color: #f7f7f7;
-  color: steelblue;
+}
+
+.item-text {
+  cursor: pointer;
+}
+
+.checkmark {
+  color: green;
+}
+
+input::-webkit-input-placeholder {
+  color: #ddd;
+}
+
+#bottom-info {
+  padding: 0px 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+#bottom-info button {
+  float: right;
+  font-weight: bold;
 }
