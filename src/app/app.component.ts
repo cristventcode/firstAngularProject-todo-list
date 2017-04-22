@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = "To-do List";
-  allItems = ALLITEMS;
+  allItems: listItem[] = [];
   newItem = new listItem;
   notDoneCount: number;
 
@@ -18,37 +18,36 @@ export class AppComponent {
       var newTemp: listItem = this.newItem;
       this.allItems.push(newTemp);
       this.newItem = new listItem;
-      this.notDoneCount = getNotDone();
+      this.notDoneCount = getNotDone(this.allItems);
     };
   };
 
   deleteItem(id: number) {
-    var location = ALLITEMS.findIndex(item => item.id == id);
-    ALLITEMS.splice(location, 1);
-    this.notDoneCount = getNotDone();
+    var location = this.allItems.findIndex(item => item.id == id);
+    this.allItems.splice(location, 1);
+    this.notDoneCount = getNotDone(this.allItems);
   };
 
   clearDone() {
-    for (var item in this.allItems) {
-      if (this.allItems[item].done === true) {
-        var id = this.allItems[item].id;
-        var location = this.allItems.findIndex(item => item.id == id);
-        this.allItems.splice(location, 1);
+    let newList: listItem[] = [];
+    this.allItems.forEach(element => {
+      if (element.done === false) {
+        newList.push(element);
       }
-    }
+    });
+    this.allItems = newList;
+    this.notDoneCount = getNotDone(this.allItems);
   }
 
   toggleStatus(id: any) {
-    var temp: listItem = ALLITEMS.find(item => item.id == id);
+    var temp: listItem = this.allItems.find(item => item.id == id);
     temp.done = (temp.done === false) ? true : false;
     makeChange(id, temp.done);
-    this.notDoneCount = getNotDone();
+    this.notDoneCount = getNotDone(this.allItems);
   };
 }
 
-const ALLITEMS: listItem[] = [];
-
-var idCounter: number = 1;
+var idCounter: number = 0;
 
 export class listItem {
   id: number;
@@ -56,19 +55,18 @@ export class listItem {
   done: boolean = false;
 }
 
-
 function makeChange(id, status: boolean) {
   var clicked = document.getElementById(id);
   clicked.style.textDecoration = (status === true) ? "line-through" : "none";
 };
 
-function getNotDone() {
+function getNotDone(list) {
   var notDone: number = 0;
-  for (var item in ALLITEMS) {
-    if (ALLITEMS[item].done === false) {
+  list.forEach(element => {
+    if (element.done === false) {
       notDone++;
     }
-  }
+  });
   return notDone;
 }
 

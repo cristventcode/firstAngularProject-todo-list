@@ -5,7 +5,6 @@
         <input placeholder="What should I list ?" [(ngModel)]="newItem.title" type="text" (keydown)="addNewItem($event)" class="form-control todo-input"
           value="{{newItem.title}}">
       </div>
-
       <ul class="list-group">
         <li class="list-group-item object-item" *ngFor="let item of allItems">
           <div class="row inline-block">

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
     FormsModule // <-- import the FormsModule before binding with [(ngModel)]
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [AppComponent]
 })
