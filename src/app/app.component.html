@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 list-main">
+      <h2 class="text-center">Create a List</h2>
       <div class="form-group">
         <input placeholder="What should I list ?" [(ngModel)]="newItem.title" type="text" (keydown)="addNewItem($event)" class="form-control todo-input"
           value="{{newItem.title}}">
@@ -18,12 +19,9 @@
           </div>
         </li>
       </ul>
-      <div id="bottom-info" class="clearfix">
+      <div id="bottom-info" class="clearfix" *ngIf="notDoneCount !== NaN">
         <span *ngIf="notDoneCount"> {{notDoneCount}} left to complete</span>
-        <span *ngIf="notDoneCount === NaN"> Add to list </span>
         <button *ngIf="notDoneCount < allItems.length" class="btn btn-xs btn-default" (click)="clearDone()"> Clear Completed </button>
-        <br>
-        <br>
       </div>
     </div>
   </div>

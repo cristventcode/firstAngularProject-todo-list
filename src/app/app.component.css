@@ -40,6 +40,7 @@ li {
 
 .list-group {
   border-radius: 0px;
+  margin-bottom: 0px
 }
 
 .list-group-item {
@@ -100,7 +101,7 @@ input::-webkit-input-placeholder {
 }
 
 #bottom-info {
-  padding: 0px 15px;
+  padding: 15px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
