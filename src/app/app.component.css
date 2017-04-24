@@ -1,0 +1,117 @@
+.list-main {
+  border: 1px solid #ddd;
+  margin: 0px auto;
+  float: none;
+  margin-top: 30px;
+  padding: 0px;
+}
+
+h2 {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+.form-group input {
+  height: 40px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  max-width: none;
+}
+
+.todo-input {
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 4px 15px;
+  border: none;
+  border-radius: 0px;
+  width: 100%;
+}
+
+li {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.list-group-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 18px;
+}
+
+.list-group {
+  border-radius: 0px;
+  margin-bottom: 0px
+}
+
+.list-group-item {
+  border-radius: 0px;
+  border-right: none;
+  border-left: none;
+}
+
+.row li {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.text-holder {
+  top: 0;
+  bottom: 0px;
+  left: 0;
+  display: inline-block;
+}
+
+.delete-holder {
+  text-align: center;
+  top: 0;
+  bottom: 0px;
+  right: 0;
+  display: inline-block;
+  position: absolute;
+}
+
+.delete-btn {
+  position: relative;
+  top: 33%;
+  height: 50%;
+  line-height: 20px;
+  display: none;
+  color: red;
+  cursor: pointer;
+}
+
+li:hover>.row>.delete-holder>.delete-btn {
+  display: block;
+}
+
+.object-item:hover {
+  background-color: #f7f7f7;
+}
+
+.item-text {
+  cursor: pointer;
+}
+
+.checkmark {
+  color: green;
+}
+
+input::-webkit-input-placeholder {
+  color: #ddd;
+}
+
+#bottom-info {
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+#bottom-info button {
+  float: right;
+  font-weight: bold;
+}
